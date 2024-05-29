@@ -2,29 +2,125 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purchase Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #1f1f1f;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 720px;
+    height: 650px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #ff9800;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+#gender {
+    font-size: 22px;
+
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+input[type="file"] {
+    border: none;
+    padding: 0;
+}
+
+button.btn {
+    background-color: #ff9800;
+    color: #ffffff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+button.btn:hover {
+    background-color: #e68900;
+    font-size: 24px;
+}
+
+a {
+    color: #ff9800;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
 </head>
 <body>
-    <h1>Purchase Prediction</h1>
-    <form action="/predict" method="post">
-        <label for="gender">Gender:</label>
-        <select name="gender" id="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select><br><br>
-        
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" value="25"><br><br>
-        
-        <label for="salary">Salary:</label>
-        <input type="number" id="salary" name="salary" value="50000"><br><br>
-        
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" value="50"><br><br>
-        
-        <input type="submit" value="Predict">
-    </form>
+    <div class="container">
+        <h1>Purchase Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary:</label>
+                <input type="number" id="salary" name="salary" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload CSV:</label>
+                <input type="file" id="file" name="file" accept=".csv" required>
+            </div>
+            <button type="submit" class="btn">Upload and Predict</button>
+        </form>
+    </div>
 </body>
 </html>

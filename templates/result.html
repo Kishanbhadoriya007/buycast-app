@@ -2,13 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #1f1f1f;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 720px;
+    height: 650px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #ff9800;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+#gender {
+    font-size: 22px;
+
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+input[type="file"] {
+    border: none;
+    padding: 0;
+}
+
+button.btn {
+    background-color: #ff9800;
+    color: #ffffff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+button.btn:hover {
+    background-color: #e68900;
+    font-size: 24px;
+}
+
+a {
+    color: #ff9800;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+    </style>
 </head>
 <body>
-    <h1>Result</h1>
-    <p>{{ prediction_text }}</p>
-    <a href="/">Go Back</a>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p>{{ prediction_text }}</p>
+        <a href="/">Back</a>
+    </div>
 </body>
 </html>
